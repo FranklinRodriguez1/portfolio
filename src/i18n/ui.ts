@@ -88,6 +88,8 @@ export const ui: Record<Lang, Record<string, string>> = {
     "contact.text":
       "Open to full-stack roles and collaborative projects. If you're building something ambitious, let's talk.",
     "contact.emailLabel": "Direct Email",
+    "contact.phoneLabel": "Phone",
+    "contact.whatsappLabel": "WhatsApp",
     "contact.locationLabel": "Based in",
     "contact.location": "Remote — Worldwide",
     "form.identity": "Identity",
@@ -188,6 +190,8 @@ export const ui: Record<Lang, Record<string, string>> = {
     "contact.text":
       "Abierto a roles full-stack y proyectos colaborativos. Si estás construyendo algo ambicioso, hablemos.",
     "contact.emailLabel": "Correo directo",
+    "contact.phoneLabel": "Teléfono",
+    "contact.whatsappLabel": "WhatsApp",
     "contact.locationLabel": "Ubicación",
     "contact.location": "Remoto — Global",
     "form.identity": "Identidad",
