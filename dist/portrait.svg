@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 640" role="img" aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16161b"/>
+      <stop offset="1" stop-color="#0a0a0c"/>
+    </linearGradient>
+    <radialGradient id="rim" cx="0.5" cy="0.34" r="0.5">
+      <stop offset="0" stop-color="#2a2a33"/>
+      <stop offset="1" stop-color="#0d0d10"/>
+    </radialGradient>
+  </defs>
+  <rect width="520" height="640" fill="url(#bg)"/>
+  <ellipse cx="260" cy="250" rx="150" ry="180" fill="url(#rim)"/>
+  <circle cx="260" cy="210" r="82" fill="#20202a"/>
+  <path d="M120 640 C120 470 180 400 260 400 C340 400 400 470 400 640 Z" fill="#20202a"/>
+  <circle cx="470" cy="590" r="9" fill="#007bff" opacity="0.7"/>
+  <text x="260" y="600" font-family="'Space Grotesk',sans-serif" font-size="18" fill="#4a4a55" text-anchor="middle" letter-spacing="3">REPLACE · portrait.jpg</text>
+</svg>

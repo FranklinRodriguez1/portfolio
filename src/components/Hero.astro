@@ -1,0 +1,176 @@
+---
+import { Image } from "astro:assets";
+import { ui, defaultLang } from "../i18n/ui";
+import frankPhoto from "../assets/frank.jpg";
+const L = ui[defaultLang];
+---
+
+<section class="hero section" id="top">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">{L["hero.eyebrow"]}</p>
+      <p class="hero__name reveal" data-i18n="hero.name">{L["hero.name"]}</p>
+      <h1 class="hero__title reveal">
+        <span class="accent" data-i18n="hero.title1">{L["hero.title1"]}</span><br />
+        <span data-i18n="hero.title2">{L["hero.title2"]}</span>
+      </h1>
+      <p class="hero__lead reveal" data-i18n="hero.lead">{L["hero.lead"]}</p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--primary" href="#work" data-i18n="hero.viewWork">{L["hero.viewWork"]}</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="hero.startProject">{L["hero.startProject"]}</a>
+      </div>
+
+      <dl class="hero__stats reveal">
+        <div>
+          <dt data-i18n="hero.stat1.v">{L["hero.stat1.v"]}</dt>
+          <dd data-i18n="hero.stat1.l">{L["hero.stat1.l"]}</dd>
+        </div>
+        <div>
+          <dt data-i18n="hero.stat2.v">{L["hero.stat2.v"]}</dt>
+          <dd data-i18n="hero.stat2.l">{L["hero.stat2.l"]}</dd>
+        </div>
+        <div>
+          <dt data-i18n="hero.stat3.v">{L["hero.stat3.v"]}</dt>
+          <dd data-i18n="hero.stat3.l">{L["hero.stat3.l"]}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero__media reveal">
+      <div class="portrait">
+        <Image
+          src={frankPhoto}
+          alt="Franklin Rodriguez"
+          width={520}
+          height={640}
+          widths={[340, 460, 520, 1040]}
+          sizes="(max-width: 860px) 340px, 460px"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <span class="corner corner--tl"></span>
+        <span class="corner corner--br"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(600px 320px at 78% 22%, rgba(0, 123, 255, 0.14), transparent 70%),
+      radial-gradient(500px 300px at 10% 80%, rgba(216, 87, 1, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .hero__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .hero__name {
+    font-family: var(--font-head);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 1rem 0 0.4rem;
+  }
+  .hero__title {
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    margin: 0 0 1.5rem;
+  }
+  .accent {
+    color: var(--primary);
+  }
+  .hero__lead {
+    max-width: 48ch;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .hero__stats {
+    display: flex;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin: 3rem 0 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero__stats div {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__stats dt {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .hero__stats dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+  }
+
+  .hero__media {
+    display: flex;
+    justify-content: center;
+  }
+  .portrait {
+    position: relative;
+    width: min(100%, 460px);
+  }
+  .portrait img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    object-fit: cover;
+    filter: grayscale(0.12) contrast(1.04);
+    border: 1px solid var(--border);
+  }
+  .corner {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border: 2px solid var(--primary);
+  }
+  .corner--tl {
+    top: -12px;
+    left: -12px;
+    border-right: none;
+    border-bottom: none;
+  }
+  .corner--br {
+    bottom: -12px;
+    right: -12px;
+    border-left: none;
+    border-top: none;
+    border-color: var(--tertiary);
+  }
+
+  @media (max-width: 860px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__media {
+      order: -1;
+    }
+    .portrait {
+      width: min(100%, 340px);
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import { ui, defaultLang } from "../i18n/ui";
+const L = ui[defaultLang];
+const year = new Date().getFullYear();
+const social = [
+  { label: "GitHub", href: "https://github.com/FranklinRodriguez1" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/franklirodriguez/" },
+  { label: "Email", href: "mailto:franklinrodriguezdev@gmail.com" },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark"></span>
+      Franklin<span class="brand__dot">.</span>dev
+    </a>
+
+    <nav class="footer__social" aria-label="Social">
+      {social.map((s) => (
+        <a href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          {s.label}
+        </a>
+      ))}
+    </nav>
+
+    <p class="footer__copy">
+      © {year} Franklin Rodriguez — <span data-i18n="footer.copy">{L["footer.copy"]}</span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: 2.2rem;
+  }
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+  }
+  .brand__mark {
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    background: var(--primary);
+  }
+  .brand__dot {
+    color: var(--primary);
+  }
+  .footer__social {
+    display: flex;
+    gap: 1.6rem;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer__social a:hover {
+    color: var(--primary);
+  }
+  .footer__copy {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  @media (max-width: 640px) {
+    .footer__inner {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+</style>

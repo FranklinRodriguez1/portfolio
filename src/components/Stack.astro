@@ -1,0 +1,151 @@
+---
+import { ui, defaultLang } from "../i18n/ui";
+const L = ui[defaultLang];
+const stack = [
+  { n: "stack.1.n", d: "stack.1.d", icon: "TS" },
+  { n: "stack.2.n", d: "stack.2.d", icon: "◆" },
+  { n: "stack.3.n", d: "stack.3.d", icon: "⬡" },
+  { n: "stack.4.n", d: "stack.4.d", icon: "▤" },
+  { n: "stack.5.n", d: "stack.5.d", icon: "🍃" },
+  { n: "stack.6.n", d: "stack.6.d", icon: "△" },
+  { n: "stack.7.n", d: "stack.7.d", icon: "⚡" },
+  { n: "stack.8.n", d: "stack.8.d", icon: "☁" },
+];
+const learning = ["NestJS", "Docker", "CI/CD", "GitHub Actions", "DevOps", "IaC"];
+---
+
+<section class="stack section" id="stack">
+  <div class="container">
+    <header class="stack__head reveal">
+      <p class="eyebrow" data-i18n="stack.eyebrow">{L["stack.eyebrow"]}</p>
+      <h2 data-i18n="stack.title">{L["stack.title"]}</h2>
+    </header>
+
+    <div class="stack__grid">
+      {
+        stack.map((s) => (
+          <article class="tech reveal">
+            <span class="tech__icon">{s.icon}</span>
+            <h3 data-i18n={s.n}>{L[s.n]}</h3>
+            <p data-i18n={s.d}>{L[s.d]}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="stack__learning reveal">
+      <span class="stack__learning-label" data-i18n="stack.learning">{L["stack.learning"]}</span>
+      <ul>
+        {learning.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack__head {
+    margin-bottom: 3rem;
+  }
+  .stack__head h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin-top: 0.8rem;
+  }
+  .stack__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .tech {
+    background: var(--surface);
+    padding: 1.6rem 1.4rem;
+    transition: background 0.2s ease;
+    position: relative;
+  }
+  .tech::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+    width: 0;
+    background: var(--primary);
+    transition: width 0.25s ease;
+  }
+  .tech:hover {
+    background: var(--surface-2);
+  }
+  .tech:hover::after {
+    width: 100%;
+  }
+  .tech__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .tech h3 {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .tech p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  .stack__learning {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+  .stack__learning-label {
+    font-family: var(--font-head);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-right: 0.3rem;
+  }
+  .stack__learning ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .stack__learning li {
+    font-family: var(--font-head);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    border: 1px dashed var(--border-strong);
+    border-radius: 20px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 900px) {
+    .stack__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .stack__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

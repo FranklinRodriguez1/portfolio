@@ -1,0 +1,71 @@
+---
+import { ui, defaultLang } from "../i18n/ui";
+const L = ui[defaultLang];
+const items = [
+  { t: "philo.1.t", b: "philo.1.b" },
+  { t: "philo.2.t", b: "philo.2.b" },
+  { t: "philo.3.t", b: "philo.3.b" },
+];
+---
+
+<section class="philo section" id="philosophy">
+  <div class="container philo__grid">
+    <div class="philo__aside reveal">
+      <p class="eyebrow eyebrow--muted" data-i18n="philo.eyebrow">{L["philo.eyebrow"]}</p>
+      <h2 class="ml" data-i18n="philo.title">{L["philo.title"]}</h2>
+    </div>
+
+    <div class="philo__list">
+      {
+        items.map((p) => (
+          <article class="philo__item reveal">
+            <h3 data-i18n={p.t}>{L[p.t]}</h3>
+            <p data-i18n={p.b}>{L[p.b]}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .philo {
+    background: var(--bg-elev);
+    border-block: 1px solid var(--border);
+  }
+  .philo__grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+  .ml {
+    white-space: pre-line;
+  }
+  .philo__aside h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    margin-top: 1rem;
+  }
+  .philo__list {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .philo__item h3 {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 0.7rem;
+  }
+  .philo__item p {
+    color: var(--text-muted);
+    max-width: 62ch;
+    margin: 0;
+  }
+  .philo__item + .philo__item {
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 860px) {
+    .philo__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
