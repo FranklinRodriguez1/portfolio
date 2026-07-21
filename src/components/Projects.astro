@@ -60,8 +60,9 @@ const projects = [
                 </div>
               </div>
             ) : (
-              <div class={`case__art art--${p.art}`} aria-hidden="true">
-                <div class="art__inner" />
+              <div class={`case__art art--${p.art}`}>
+                <div class="art__inner" aria-hidden="true" />
+                <span class="case__badge" data-i18n="work.comingSoon">{L["work.comingSoon"]}</span>
               </div>
             )}
             <div class="case__body">
@@ -168,10 +169,28 @@ const projects = [
     background: var(--surface);
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .art__inner {
     position: absolute;
     inset: 0;
+  }
+  .case__badge {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-head);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    backdrop-filter: blur(6px);
   }
   .art--grid .art__inner {
     background-image: linear-gradient(var(--border) 1px, transparent 1px),
