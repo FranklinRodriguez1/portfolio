@@ -1,10 +1,11 @@
 ---
 import { ui, defaultLang } from "../i18n/ui";
+import { CONTACT_FORM_ENABLED } from "../config";
 const L = ui[defaultLang];
 ---
 
 <section class="contact section" id="contact">
-  <div class="container contact__grid">
+  <div class={`container contact__grid ${CONTACT_FORM_ENABLED ? "" : "contact__grid--solo"}`}>
     <div class="contact__intro reveal">
       <h2 class="ml" data-i18n="contact.title">{L["contact.title"]}</h2>
       <p data-i18n="contact.text">{L["contact.text"]}</p>
@@ -35,28 +36,30 @@ const L = ui[defaultLang];
       </ul>
     </div>
 
-    <form class="contact__form reveal" name="contact">
-      <div class="row">
+    {CONTACT_FORM_ENABLED && (
+      <form class="contact__form reveal" name="contact">
+        <div class="row">
+          <label>
+            <span data-i18n="form.identity">{L["form.identity"]}</span>
+            <input type="text" name="name" data-i18n-ph="form.name.ph" placeholder={L["form.name.ph"]} required />
+          </label>
+          <label>
+            <span data-i18n="form.email">{L["form.email"]}</span>
+            <input type="email" name="email" data-i18n-ph="form.email.ph" placeholder={L["form.email.ph"]} required />
+          </label>
+        </div>
         <label>
-          <span data-i18n="form.identity">{L["form.identity"]}</span>
-          <input type="text" name="name" data-i18n-ph="form.name.ph" placeholder={L["form.name.ph"]} required />
+          <span data-i18n="form.brief">{L["form.brief"]}</span>
+          <textarea name="brief" rows="5" data-i18n-ph="form.brief.ph" placeholder={L["form.brief.ph"]} required></textarea>
         </label>
-        <label>
-          <span data-i18n="form.email">{L["form.email"]}</span>
-          <input type="email" name="email" data-i18n-ph="form.email.ph" placeholder={L["form.email.ph"]} required />
+        <label class="hp-field" aria-hidden="true">
+          Company
+          <input type="text" name="company" tabindex="-1" autocomplete="off" />
         </label>
-      </div>
-      <label>
-        <span data-i18n="form.brief">{L["form.brief"]}</span>
-        <textarea name="brief" rows="5" data-i18n-ph="form.brief.ph" placeholder={L["form.brief.ph"]} required></textarea>
-      </label>
-      <label class="hp-field" aria-hidden="true">
-        Company
-        <input type="text" name="company" tabindex="-1" autocomplete="off" />
-      </label>
-      <button class="btn btn--primary contact__submit" type="submit" data-i18n="form.submit">{L["form.submit"]}</button>
-      <p class="contact__status" role="status" aria-live="polite"></p>
-    </form>
+        <button class="btn btn--primary contact__submit" type="submit" data-i18n="form.submit">{L["form.submit"]}</button>
+        <p class="contact__status" role="status" aria-live="polite"></p>
+      </form>
+    )}
   </div>
 </section>
 
@@ -70,6 +73,18 @@ const L = ui[defaultLang];
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 6vw, 5rem);
     align-items: center;
+  }
+  .contact__grid--solo {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .contact__grid--solo .contact__intro p {
+    margin-inline: auto;
+  }
+  .contact__grid--solo .contact__meta {
+    justify-items: center;
   }
   .ml {
     white-space: pre-line;

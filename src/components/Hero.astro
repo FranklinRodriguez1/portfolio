@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { ui, defaultLang } from "../i18n/ui";
+import { CONTACT_FORM_ENABLED } from "../config";
 import frankPhoto from "../assets/frank.jpg";
 const L = ui[defaultLang];
 ---
@@ -17,7 +18,9 @@ const L = ui[defaultLang];
       <p class="hero__lead reveal" data-i18n="hero.lead">{L["hero.lead"]}</p>
       <div class="hero__actions reveal">
         <a class="btn btn--primary" href="#work" data-i18n="hero.viewWork">{L["hero.viewWork"]}</a>
-        <a class="btn btn--ghost" href="#contact" data-i18n="hero.startProject">{L["hero.startProject"]}</a>
+        {CONTACT_FORM_ENABLED && (
+          <a class="btn btn--ghost" href="#contact" data-i18n="hero.startProject">{L["hero.startProject"]}</a>
+        )}
       </div>
 
       <dl class="hero__stats reveal">
