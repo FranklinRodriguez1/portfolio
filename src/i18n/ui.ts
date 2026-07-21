@@ -97,7 +97,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     "form.brief": "Message",
     "form.brief.ph": "Describe your project or idea…",
     "form.submit": "Send Message",
+    "form.sending": "Sending…",
     "form.success": "Message Sent ✓",
+    "form.error": "Something went wrong — please email me directly.",
 
     // Footer
     "footer.copy": "Built with Astro",
@@ -195,7 +197,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     "form.brief": "Mensaje",
     "form.brief.ph": "Describe tu proyecto o idea…",
     "form.submit": "Enviar Mensaje",
+    "form.sending": "Enviando…",
     "form.success": "Mensaje Enviado ✓",
+    "form.error": "Algo salió mal — escríbeme directo por correo.",
 
     // Footer
     "footer.copy": "Hecho con Astro",
