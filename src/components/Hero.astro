@@ -78,11 +78,10 @@ const L = ui[defaultLang];
   }
   .hero__name {
     font-family: var(--font-head);
-    font-size: 0.85rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--text-muted);
-    margin: 1rem 0 0.4rem;
+    margin: 0.9rem 0 0.6rem;
   }
   .hero__title {
     font-size: clamp(2.8rem, 7vw, 5.2rem);
@@ -95,6 +94,7 @@ const L = ui[defaultLang];
     max-width: 48ch;
     color: var(--text-muted);
     font-size: 1.05rem;
+    line-height: 1.6;
   }
   .hero__actions {
     display: flex;
@@ -173,4 +173,15 @@ const L = ui[defaultLang];
       width: min(100%, 340px);
     }
   }
+
+  /* Staggered entrance: copy cascades in top-to-bottom, media follows slightly
+     behind. Harmless under prefers-reduced-motion — global.css disables the
+     underlying transition entirely, so these delays never animate. */
+  .hero__copy > .reveal:nth-child(1) { transition-delay: 0ms; }
+  .hero__copy > .reveal:nth-child(2) { transition-delay: 60ms; }
+  .hero__copy > .reveal:nth-child(3) { transition-delay: 120ms; }
+  .hero__copy > .reveal:nth-child(4) { transition-delay: 180ms; }
+  .hero__copy > .reveal:nth-child(5) { transition-delay: 240ms; }
+  .hero__copy > .reveal:nth-child(6) { transition-delay: 300ms; }
+  .hero__media.reveal { transition-delay: 150ms; }
 </style>

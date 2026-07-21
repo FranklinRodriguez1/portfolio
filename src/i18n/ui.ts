@@ -15,20 +15,20 @@ export const ui: Record<Lang, Record<string, string>> = {
     "toggle.lang": "Language",
 
     // Hero
-    "hero.eyebrow": "Full-Stack Development & Cloud",
+    "hero.eyebrow": "Full-Stack Developer",
     "hero.name": "Franklin Rodriguez",
-    "hero.title1": "Full-Stack",
-    "hero.title2": "Developer",
+    "hero.title1": "Secure, scalable",
+    "hero.title2": "web applications.",
     "hero.lead":
-      "I build modern web applications with a focus on software architecture and cloud computing. On the path to becoming a Software Engineer with a strong command of both development and infrastructure.",
+      "Full-stack engineer building typed, production-grade systems — Next.js interfaces, Node.js APIs, and cloud infrastructure on Azure.",
     "hero.viewWork": "View Work →",
     "hero.startProject": "Start a Project",
     "hero.stat1.v": "4+",
     "hero.stat1.l": "Projects built",
-    "hero.stat2.v": "Full-Stack",
-    "hero.stat2.l": "TypeScript-first",
+    "hero.stat2.v": "TypeScript",
+    "hero.stat2.l": "End-to-end typed",
     "hero.stat3.v": "Azure",
-    "hero.stat3.l": "Cloud in progress",
+    "hero.stat3.l": "Cloud infrastructure",
 
     // Philosophy
     "philo.eyebrow": "Principles",
@@ -113,20 +113,20 @@ export const ui: Record<Lang, Record<string, string>> = {
     "toggle.lang": "Idioma",
 
     // Hero
-    "hero.eyebrow": "Desarrollo Full-Stack y Nube",
+    "hero.eyebrow": "Desarrollador Full-Stack",
     "hero.name": "Franklin Rodriguez",
-    "hero.title1": "Desarrollador",
-    "hero.title2": "Full-Stack",
+    "hero.title1": "Aplicaciones web",
+    "hero.title2": "seguras y escalables.",
     "hero.lead":
-      "Construyo aplicaciones web modernas con enfoque en arquitectura de software y computación en la nube. En camino a convertirme en ingeniero de software con dominio sólido tanto del desarrollo como de la infraestructura.",
+      "Ingeniero full-stack construyendo sistemas tipados de nivel producción — interfaces en Next.js, APIs en Node.js e infraestructura en la nube con Azure.",
     "hero.viewWork": "Ver Proyectos →",
     "hero.startProject": "Iniciar Proyecto",
     "hero.stat1.v": "4+",
     "hero.stat1.l": "Proyectos construidos",
-    "hero.stat2.v": "Full-Stack",
-    "hero.stat2.l": "Enfocado en TypeScript",
+    "hero.stat2.v": "TypeScript",
+    "hero.stat2.l": "Tipado de extremo a extremo",
     "hero.stat3.v": "Azure",
-    "hero.stat3.l": "Nube en progreso",
+    "hero.stat3.l": "Infraestructura en la nube",
 
     // Philosophy
     "philo.eyebrow": "Principios",
