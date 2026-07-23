@@ -17,7 +17,6 @@ const projects = [
     art: "grid",
     images: truxImages,
   },
-  { name: "Semtex", tag: "work.2.tag", body: "work.2.b", stack: ["Node.js", "AI Agents", "MongoDB"], art: "orb" },
   { name: "Atrius Verborum", tag: "work.4.tag", body: "work.4.b", stack: ["JWT", "RBAC", "Swagger"], art: "grid" },
 ];
 ---
@@ -35,7 +34,14 @@ const projects = [
         projects.map((p, i) => (
           <article class={`case reveal ${i % 2 ? "case--rev" : ""}`}>
             {p.images ? (
-              <div class="case__carousel" data-carousel aria-label={`${p.name} screenshots`}>
+              <div
+                class="case__carousel"
+                data-carousel
+                data-open-modal={i}
+                role="button"
+                tabindex="0"
+                aria-label={`${p.name} screenshots — open project details`}
+              >
                 {p.images.map((img, n) => (
                   <Image
                     src={img}
@@ -60,7 +66,13 @@ const projects = [
                 </div>
               </div>
             ) : (
-              <div class={`case__art art--${p.art}`}>
+              <div
+                class={`case__art art--${p.art}`}
+                data-open-modal={i}
+                role="button"
+                tabindex="0"
+                aria-label={`${p.name} — open project details`}
+              >
                 <div class="art__inner" aria-hidden="true" />
                 <span class="case__badge" data-i18n="work.comingSoon">{L["work.comingSoon"]}</span>
               </div>
@@ -72,12 +84,71 @@ const projects = [
               <ul class="case__stack">
                 {p.stack.map((s) => <li>{s}</li>)}
               </ul>
-              <a class="case__link" href="#contact" data-i18n="work.link">{L["work.link"]}</a>
+              <button type="button" class="case__link" data-open-modal={i} data-i18n="work.link">
+                {L["work.link"]}
+              </button>
             </div>
           </article>
         ))
       }
     </div>
+
+    {
+      projects.map((p, i) => (
+        <div class="project-modal" id={`project-modal-${i}`} data-modal aria-hidden="true">
+          <div class="project-modal__overlay" data-close-modal />
+          <div
+            class="project-modal__panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`project-modal-title-${i}`}
+          >
+            <button
+              type="button"
+              class="project-modal__close"
+              data-close-modal
+              data-i18n-aria="work.modal.close"
+              aria-label={L["work.modal.close"]}
+            >
+              ×
+            </button>
+
+            {p.images ? (
+              <div class="project-modal__gallery">
+                {p.images.map((img, n) => (
+                  <Image
+                    src={img}
+                    alt={`${p.name} — screenshot ${n + 1}`}
+                    class="project-modal__img"
+                    widths={[400, 700, 960]}
+                    sizes="(max-width: 700px) 100vw, 420px"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            ) : (
+              <div class={`project-modal__art art--${p.art}`}>
+                <div class="art__inner" aria-hidden="true" />
+                <span class="case__badge" data-i18n="work.comingSoon">{L["work.comingSoon"]}</span>
+              </div>
+            )}
+
+            <div class="project-modal__body">
+              <p class="case__tag" data-i18n={p.tag}>{L[p.tag]}</p>
+              <h3 id={`project-modal-title-${i}`}>{p.name}</h3>
+              <p class="case__desc" data-i18n={p.body}>{L[p.body]}</p>
+              <p class="project-modal__label" data-i18n="work.modal.stack">{L["work.modal.stack"]}</p>
+              <ul class="case__stack">
+                {p.stack.map((s) => <li>{s}</li>)}
+              </ul>
+              <a class="case__link" href="#contact" data-close-modal data-i18n="cta.start">
+                {L["cta.start"]}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>
 
@@ -279,6 +350,115 @@ const projects = [
       order: 0;
     }
   }
+
+  .case__carousel,
+  .case__art {
+    cursor: pointer;
+  }
+  .case__link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .project-modal[data-open="true"] {
+    display: flex;
+  }
+  .project-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 6, 8, 0.72);
+    backdrop-filter: blur(4px);
+  }
+  .project-modal__panel {
+    position: relative;
+    z-index: 1;
+    width: min(760px, 100%);
+    max-height: min(88vh, 900px);
+    overflow-y: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .project-modal__close {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin-left: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 1;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .project-modal__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .project-modal__img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    object-position: top;
+    border-radius: calc(var(--radius) * 0.6);
+    border: 1px solid var(--border);
+  }
+  .project-modal__art {
+    aspect-ratio: 16 / 9;
+    border-radius: calc(var(--radius) * 0.6);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .project-modal__label {
+    font-family: var(--font-head);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 0.6rem;
+  }
+  .project-modal__body .case__link {
+    display: inline-block;
+    background: var(--primary);
+    color: var(--bg);
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    margin-top: 0.5rem;
+  }
+  .project-modal__body .case__link:hover {
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 540px) {
+    .project-modal__gallery {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <script>
@@ -309,7 +489,8 @@ const projects = [
     }
 
     dots.forEach((dot, n) => {
-      dot.addEventListener("click", () => {
+      dot.addEventListener("click", (e) => {
+        e.stopPropagation();
         show(n);
         start();
       });
@@ -322,5 +503,49 @@ const projects = [
 
     show(0);
     start();
+  });
+
+  // Project detail modals
+  let lastFocused: HTMLElement | null = null;
+
+  function openModal(index: string) {
+    const modal = document.getElementById(`project-modal-${index}`);
+    if (!modal) return;
+    lastFocused = document.activeElement as HTMLElement;
+    modal.setAttribute("data-open", "true");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    modal.querySelector<HTMLButtonElement>(".project-modal__close")?.focus();
+  }
+
+  function closeModal(modal: HTMLElement) {
+    modal.removeAttribute("data-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    lastFocused?.focus();
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-open-modal]").forEach((trigger) => {
+    trigger.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest(".carousel__dot")) return;
+      openModal(trigger.dataset.openModal!);
+    });
+    trigger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal(trigger.dataset.openModal!);
+      }
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>(".project-modal").forEach((modal) => {
+    modal.querySelectorAll<HTMLElement>("[data-close-modal]").forEach((el) => {
+      el.addEventListener("click", () => closeModal(modal));
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll<HTMLElement>('.project-modal[data-open="true"]').forEach((modal) => closeModal(modal));
   });
 </script>

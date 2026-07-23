@@ -83,6 +83,9 @@ export const ui: Record<Lang, Record<string, string>> = {
       "A platform centered on authentication and role-based access control (RBAC), with JWT-secured REST APIs and documented endpoints via Swagger.",
     "work.link": "View details →",
     "work.comingSoon": "Screenshots coming soon",
+    "work.modal.close": "Close",
+    "work.modal.stack": "Stack",
+    "work.modal.gallery": "Gallery",
 
     // Contact
     "contact.title": "Let's build\nthe future.",
@@ -186,6 +189,9 @@ export const ui: Record<Lang, Record<string, string>> = {
       "Plataforma centrada en autenticación y control de acceso basado en roles (RBAC), con APIs REST protegidas por JWT y endpoints documentados con Swagger.",
     "work.link": "Ver detalles →",
     "work.comingSoon": "Capturas próximamente",
+    "work.modal.close": "Cerrar",
+    "work.modal.stack": "Stack",
+    "work.modal.gallery": "Galería",
 
     // Contact
     "contact.title": "Construyamos\nel futuro.",
