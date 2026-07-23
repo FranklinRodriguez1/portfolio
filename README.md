@@ -53,6 +53,19 @@ npm run build
 npm run preview
 ```
 
+### Formulario de contacto
+
+El formulario de contacto envía un correo real a través de [Resend](https://resend.com). Necesitas una API key:
+
+1. Crea una cuenta gratuita en [resend.com](https://resend.com) y genera una API key.
+2. Copia `.env.example` a `.env` y pega tu key:
+   ```bash
+   cp .env.example .env
+   ```
+3. En producción (Vercel), agrega `RESEND_API_KEY` como variable de entorno del proyecto.
+
+El sitio se despliega con el [adapter de Vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) — el resto de las páginas siguen siendo estáticas; solo `src/pages/api/contact.ts` corre on-demand para procesar el envío.
+
 | Comando           | Acción                                           |
 | :----------------- | :------------------------------------------------ |
 | `npm install`       | Instala las dependencias                          |

@@ -82,12 +82,18 @@ export const ui: Record<Lang, Record<string, string>> = {
     "work.4.b":
       "A platform centered on authentication and role-based access control (RBAC), with JWT-secured REST APIs and documented endpoints via Swagger.",
     "work.link": "View details →",
+    "work.comingSoon": "Screenshots coming soon",
+    "work.modal.close": "Close",
+    "work.modal.stack": "Stack",
+    "work.modal.gallery": "Gallery",
 
     // Contact
     "contact.title": "Let's build\nthe future.",
     "contact.text":
       "Open to full-stack roles and collaborative projects. If you're building something ambitious, let's talk.",
     "contact.emailLabel": "Direct Email",
+    "contact.phoneLabel": "Phone",
+    "contact.whatsappLabel": "WhatsApp",
     "contact.locationLabel": "Based in",
     "contact.location": "Remote — Worldwide",
     "form.identity": "Identity",
@@ -97,7 +103,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     "form.brief": "Message",
     "form.brief.ph": "Describe your project or idea…",
     "form.submit": "Send Message",
+    "form.sending": "Sending…",
     "form.success": "Message Sent ✓",
+    "form.error": "Something went wrong — please email me directly.",
 
     // Footer
     "footer.copy": "Built with Astro",
@@ -180,12 +188,18 @@ export const ui: Record<Lang, Record<string, string>> = {
     "work.4.b":
       "Plataforma centrada en autenticación y control de acceso basado en roles (RBAC), con APIs REST protegidas por JWT y endpoints documentados con Swagger.",
     "work.link": "Ver detalles →",
+    "work.comingSoon": "Capturas próximamente",
+    "work.modal.close": "Cerrar",
+    "work.modal.stack": "Stack",
+    "work.modal.gallery": "Galería",
 
     // Contact
     "contact.title": "Construyamos\nel futuro.",
     "contact.text":
       "Abierto a roles full-stack y proyectos colaborativos. Si estás construyendo algo ambicioso, hablemos.",
     "contact.emailLabel": "Correo directo",
+    "contact.phoneLabel": "Teléfono",
+    "contact.whatsappLabel": "WhatsApp",
     "contact.locationLabel": "Ubicación",
     "contact.location": "Remoto — Global",
     "form.identity": "Identidad",
@@ -195,7 +209,9 @@ export const ui: Record<Lang, Record<string, string>> = {
     "form.brief": "Mensaje",
     "form.brief.ph": "Describe tu proyecto o idea…",
     "form.submit": "Enviar Mensaje",
+    "form.sending": "Enviando…",
     "form.success": "Mensaje Enviado ✓",
+    "form.error": "Algo salió mal — escríbeme directo por correo.",
 
     // Footer
     "footer.copy": "Hecho con Astro",
